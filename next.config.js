@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: 'export' ,
+  basePath: "/portifolio-front",
   images: { unoptimized: true },
   experimental: {
     appDir: true,
