@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export' ,
+  images: { unoptimized: true },
   experimental: {
     appDir: true,
   },
   images: {
-    domains: ['media.graphassets.com'],
+    domains: ["media.graphassets.com"],
   },
   // i18n: {
   //   locales: ['en-US', 'pt-BR'],
@@ -21,6 +23,6 @@ const nextConfig = {
   //     }
   //   ],
   // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
