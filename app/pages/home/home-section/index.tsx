@@ -1,5 +1,5 @@
-'use client'
-import { Flex, Text } from '@radix-ui/themes';
+"use client";
+import { Flex, Text } from "@radix-ui/themes";
 import { Button } from "@/app/components/button";
 import { TechBadge } from "@/app/components/tech-badge";
 import { techs } from "@/app/lib/utils";
@@ -12,11 +12,11 @@ import {
   TbBrandWhatsapp,
 } from "react-icons/tb";
 // import { useTranslation } from 'next-i18next';
-import * as Dialog from '@radix-ui/react-alert-dialog';
-import { ContactSection } from '../contact-section';
-import { Header } from '@/app/components/header';
-import { HighlightedProjects } from '../highlightedprojects';
-import { KnownTechs } from '../known-techs';
+import * as Dialog from "@radix-ui/react-alert-dialog";
+import { ContactSection } from "../contact-section";
+import { Header } from "@/app/components/header";
+import { HighlightedProjects } from "../highlightedprojects";
+import { KnownTechs } from "../known-techs";
 import { IoCloseSharp } from "react-icons/io5";
 
 const MOCK_CONTACTS = [
@@ -35,12 +35,12 @@ const MOCK_CONTACTS = [
 ];
 export const CharSection = ({}) => {
   // const { t } = useTranslation('common');
-  const [open, setOpen] = useState(false)
-  
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={open ? "blur-sm" : ""}>
-      <Header/>
-      
+      <Header />
+
       <section className="w-full h-[650px] bg-char-image bg-cover bg-center bg-no-repeat flex flex-col justify-end pb-10 py-32 lg:pb-[110px]">
         <div className="container flex items-start justify-between flex-col-reverse lg:flex-row">
           <div>
@@ -57,30 +57,37 @@ export const CharSection = ({}) => {
             </div>
             <div className="flex items-center mt-6 lg:mt-4 sm:gap-5 sm:flex-row flex-col">
               <Dialog.Root>
-                <Dialog.Trigger asChild className="rounded p-2 hover:bg-violet-250">
-                  <Button onClick={() => setOpen(true)} className="hover:px-6 hover:py-3.5 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button">
+                <Dialog.Trigger
+                  asChild
+                  className="rounded p-2 hover:bg-violet-250"
+                >
+                  <Button
+                    onClick={() => setOpen(true)}
+                    className="hover:px-6 hover:py-3.5 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
+                  >
                     Contate-me!
-                    <FaLongArrowAltRight className="lg:visible md:visible xs:invisible small:invisible sm:invisible" size={18} />
+                    <FaLongArrowAltRight
+                      className="lg:visible md:visible xs:invisible small:invisible sm:invisible"
+                      size={18}
+                    />
                   </Button>
                 </Dialog.Trigger>
-                <Dialog.Portal> 
+                <Dialog.Portal>
                   <Dialog.Overlay className="bg-gray-200" />
-                  <Dialog.Content className="fixed top-[50%] left-[50%] max-h-[85vh] 
+                  <Dialog.Content
+                    className="fixed top-[50%] left-[50%] max-h-[85vh] 
                   translate-x-[-50%] translate-y-[-50%] focus:outline-none
                   rounded-md p-8 shadow-lg bg-background w-[400px] h-[500px] 
-                  border-gray-600 border">
-                  <Flex direction="column" gap="3">
-                  <Dialog.Cancel onClick={() => setOpen(false)}>
-                    <IoCloseSharp color="white" />
-                  </Dialog.Cancel>
+                  border-gray-600 border"
+                  >
+                    <Dialog.Cancel onClick={() => setOpen(false)}>
+                      <IoCloseSharp color="white" />
+                    </Dialog.Cancel>
                     <Dialog.Description className=" font-bold text-2xl text-violet-250 p-6">
                       Send me a message!
                     </Dialog.Description>
                     <ContactSection />
-                  </Flex>
-                  
-                  </Dialog.Content> 
-                  
+                  </Dialog.Content>
                 </Dialog.Portal>
               </Dialog.Root>
               <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
@@ -99,11 +106,11 @@ export const CharSection = ({}) => {
           </div>
           <Image
             width={420}
-            height={404}          
+            height={404}
             src="/images/gif.gif"
             alt="Profile Picture"
             className="lg:visible md:visible xs:invisible small:invisible sm:invisible sm:w-full small:pt-28 tablet:pt-0 lg:pt-0 xs:w-full w-[400px] h-[300px] tablet:w-full lg:w-[504px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
-           />
+          />
         </div>
       </section>
 
