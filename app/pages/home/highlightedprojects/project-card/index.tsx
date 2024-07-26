@@ -1,11 +1,6 @@
 import { TechBadge } from "@/app/components/tech-badge";
 import Image from "next/image";
 
-// const items = {
-//   1: {"name":"NTT Movie","description": "Projeto consome uma API e lista os filmes vindos dela.", "techs":["Angular", "JS/TS", "Git/Github"]},
-//   2: {"name":"Projeto One Piece", "description": "Projeto frontend com a temática de One Piece.", "techs":["JS/TS", "Git/Github", "CSS"]},
-//   3: {"name":"To Do List", "description":"Aplicação visa a implementação do CRUD (criação, atualização e deleção de tarefas.)", "techs":["Angular", "JS/TS", "Git/Github"]},
-// };
 type ProjectCardProps = {
   projects: {
     name: string;

@@ -1,5 +1,4 @@
 "use client";
-import { Flex, Text } from "@radix-ui/themes";
 import { Button } from "@/app/components/button";
 import { TechBadge } from "@/app/components/tech-badge";
 import { techs } from "@/app/lib/utils";
@@ -63,7 +62,7 @@ export const CharSection = ({}) => {
                 >
                   <Button
                     onClick={() => setOpen(true)}
-                    className="hover:px-6 hover:py-3.5 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
+                    className="hover:px-6 hover:py-3.5 small:gap-0 sm:gap-0 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
                   >
                     Contate-me!
                     <FaLongArrowAltRight
@@ -77,13 +76,13 @@ export const CharSection = ({}) => {
                   <Dialog.Content
                     className="fixed top-[50%] left-[50%] max-h-[85vh] 
                   translate-x-[-50%] translate-y-[-50%] focus:outline-none
-                  rounded-md p-8 shadow-lg bg-background w-[400px] h-[500px] 
-                  border-gray-600 border"
+                  rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
+                  border-gray-600 border small:w-[300px]"
                   >
                     <Dialog.Cancel onClick={() => setOpen(false)}>
                       <IoCloseSharp color="white" />
                     </Dialog.Cancel>
-                    <Dialog.Description className=" font-bold text-2xl text-violet-250 p-6">
+                    <Dialog.Description className="w-[400px] small:pb-2 font-bold text-2xl text-violet-250 p-6 small:p-0 sm:p-0">
                       Send me a message!
                     </Dialog.Description>
                     <ContactSection />
