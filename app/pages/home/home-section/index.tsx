@@ -17,6 +17,7 @@ import { Header } from "@/app/components/header";
 import { HighlightedProjects } from "../highlightedprojects";
 import { KnownTechs } from "../known-techs";
 import { IoCloseSharp } from "react-icons/io5";
+import { Toaster } from "sonner";
 
 const MOCK_CONTACTS = [
   {
@@ -39,7 +40,6 @@ export const CharSection = ({}) => {
   return (
     <div className={open ? "blur-sm" : ""}>
       <Header />
-
       <section className="w-full h-[650px] bg-char-image bg-cover bg-center bg-no-repeat flex flex-col justify-end pb-10 py-32 lg:pb-[110px]">
         <div className="container flex items-start justify-between flex-col-reverse lg:flex-row">
           <div>
@@ -79,12 +79,13 @@ export const CharSection = ({}) => {
                   rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
                   border-gray-600 border small:w-[300px]"
                   >
-                    <Dialog.Cancel onClick={() => setOpen(false)}>
+                     <Dialog.Cancel className="pb-6" onClick={() => setOpen(false)}>
                       <IoCloseSharp color="white" />
                     </Dialog.Cancel>
-                    <Dialog.Description className="w-[400px] small:pb-2 font-bold text-2xl text-violet-250 p-6 small:p-0 sm:p-0">
+                   
+                    {/* <Dialog.Description className="w-[400px] text-center small:pb-2 font-bold text-violet-250 pb-6 small:p-0 sm:p-0">
                       Send me a message!
-                    </Dialog.Description>
+                    </Dialog.Description> */}
                     <ContactSection />
                   </Dialog.Content>
                 </Dialog.Portal>

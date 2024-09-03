@@ -1,5 +1,5 @@
 import { TbBrandNextjs } from "react-icons/tb";
-import { SectionTitle } from "./../section-title";
+import { SectionTitle } from "../section-title";
 import { KnownTech } from "./known-tech";
 import { techs } from "@/app/lib/utils";
 

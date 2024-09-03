@@ -1,6 +1,6 @@
-import { SectionTitle } from "./../section-title";
+import { SectionTitle } from "../section-title";
 import { HorizontalDivider } from "../../../components/divider/horizontal";
-import { ProjectCard } from "../../../pages/home/highlightedprojects/project-card/";
+import { ProjectCard } from "./project-card";
 
 const items = [
   {
@@ -27,7 +27,7 @@ export const HighlightedProjects = () => {
   const projects = Object.values(items);
   return (
     <section className={"container py-16"}>
-      <SectionTitle subtitle="skills" title="Highted Projects" />
+      <SectionTitle subtitle="projects" title="Highted Projects" />
       <HorizontalDivider className="mb-16" />
       <ProjectCard projects={projects} />
     </section>

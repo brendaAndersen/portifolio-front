@@ -4,6 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/app/components/button";
 import { IoMdSend } from "react-icons/io";
+import { useState } from "react";
+import { toast, Toaster } from "sonner";
 
 const createMessageSchema = z.object({
   name: z
@@ -38,13 +40,14 @@ export const ContactSection = () => {
   });
 
   const { register, handleSubmit } = useForm<CreateMessageData>();
-  const onSubmit = ({ name, email, message }: CreateMessageData) => {
-    alert(JSON.stringify(name + ", your message has been received!"));
-    location.reload();
+  const onSubmit = ({ name }: CreateMessageData) => {
+    toast.success(name + ", your message has been received!",{ duration: 2000 })
+  
   };
 
   return (
     <main>
+      <Toaster richColors position="top-right" />
       <FormProvider {...createMessageForm}>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -72,10 +75,10 @@ export const ContactSection = () => {
               type="email"
               id="email"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent 
-          border-0 border-b-2 appearance-none text-white 
-          border-gray-600 dark:focus:border-violet-250 focus:outline-none 
-          focus:ring-0 focus:border-violet-250 peer font-thin
-          "
+                border-0 border-b-2 appearance-none text-white 
+                border-gray-600 dark:focus:border-violet-250 focus:outline-none 
+                focus:ring-0 focus:border-violet-250 peer font-thin
+              "
               placeholder=" "
               required
             />
@@ -98,9 +101,9 @@ export const ContactSection = () => {
           </div>
           <Button
             type="submit"
-            className="sm:w-[200px] small:w-[200px] lg:w-[400px] m-6 hover:px-6 hover:py-4 hover:ease-in-out hover:duration-300 w-[300px] shadow-button"
+            className="sm:w-[200px] small:w-[200px] lg:w-[300px] m-6 hover:px-6 hover:py-4 hover:ease-in-out hover:duration-300 w-[300px] shadow-button"
           >
-            Send a message
+            Send me a message
             <IoMdSend />
           </Button>
         </form>
