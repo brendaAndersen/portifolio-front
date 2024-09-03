@@ -10,14 +10,12 @@ import {
   TbBrandLinkedin,
   TbBrandWhatsapp,
 } from "react-icons/tb";
-// import { useTranslation } from 'next-i18next';
 import * as Dialog from "@radix-ui/react-alert-dialog";
 import { ContactSection } from "../contact-section";
 import { Header } from "@/app/components/header";
 import { HighlightedProjects } from "../highlightedprojects";
 import { KnownTechs } from "../known-techs";
 import { IoCloseSharp } from "react-icons/io5";
-import { Toaster } from "sonner";
 
 const MOCK_CONTACTS = [
   {
@@ -34,7 +32,6 @@ const MOCK_CONTACTS = [
   },
 ];
 export const CharSection = ({}) => {
-  // const { t } = useTranslation('common');
   const [open, setOpen] = useState(false);
 
   return (
@@ -75,17 +72,15 @@ export const CharSection = ({}) => {
                   <Dialog.Overlay className="bg-gray-200" />
                   <Dialog.Content
                     className="fixed top-[50%] left-[50%] max-h-[85vh] 
-                  translate-x-[-50%] translate-y-[-50%] focus:outline-none
-                  rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
-                  border-gray-600 border small:w-[300px]"
-                  >
-                     <Dialog.Cancel className="pb-6" onClick={() => setOpen(false)}>
-                      <IoCloseSharp color="white" />
-                    </Dialog.Cancel>
-                   
-                    {/* <Dialog.Description className="w-[400px] text-center small:pb-2 font-bold text-violet-250 pb-6 small:p-0 sm:p-0">
-                      Send me a message!
-                    </Dialog.Description> */}
+                      translate-x-[-50%] translate-y-[-50%] focus:outline-none
+                      rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
+                      border-gray-600 border small:w-[300px]"
+                    >
+                      <div className="flex place-content-end">
+                        <Dialog.Cancel className="pb-6" onClick={() => setOpen(false)}>
+                          <IoCloseSharp color="white" />
+                        </Dialog.Cancel>
+                      </div>
                     <ContactSection />
                   </Dialog.Content>
                 </Dialog.Portal>
@@ -109,11 +104,11 @@ export const CharSection = ({}) => {
             height={404}
             src="/images/gif.gif"
             alt="Profile Picture"
-            className="lg:visible md:visible xs:invisible small:invisible sm:invisible sm:w-full small:pt-28 tablet:pt-0 lg:pt-0 xs:w-full w-[400px] h-[300px] tablet:w-full lg:w-[504px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
+            className="lg:visible md:visible xs:invisible small:invisible sm:invisible sm:w-full small:pt-28 tablet:pt-0 lg:pt-0 xs:w-full w-[400px] h-[300px] 
+            lg:w-[504px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
           />
         </div>
       </section>
-
       <KnownTechs />
       <HighlightedProjects />
     </div>

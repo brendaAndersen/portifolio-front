@@ -4,7 +4,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/app/components/button";
 import { IoMdSend } from "react-icons/io";
-import { useState } from "react";
 import { toast, Toaster } from "sonner";
 
 const createMessageSchema = z.object({
@@ -59,11 +58,14 @@ export const ContactSection = () => {
               {...register("name")}
               type="text"
               name="name"
-              className="text-white block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 dark:focus:border-violet-250 focus:outline-none focus:ring-0 focus:border-violet-250 peer font-thin"
+              className="focus:bg-slate-900 text-white block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none
+              border-gray-600 focus:border-violet-250 peer font-thin"
               placeholder=" "
               required
             />
-            <label className="text-violet-250 font-bold peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold">
+            <label className="text-violet-250 font-bold peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-9 scale-75 top-3 
+            -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 
+            peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold">
               Name
             </label>
           </div>
@@ -84,7 +86,8 @@ export const ContactSection = () => {
             />
             <label
               className="text-violet-250 font-bold 
-          peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold"
+              peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-10 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0
+              rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold"
             >
               E-mail
             </label>
@@ -94,18 +97,22 @@ export const ContactSection = () => {
               {...register("message")}
               id="message"
               className="bg-transparent 
-          focus:outline-none focus:ring focus:ring-violet-250 
-          block p-2.5 w-full text-sm rounded-lg border-2 border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none"
+                focus:outline-none focus:ring focus:ring-violet-250 
+                block p-2.5 w-full text-sm rounded-lg border-2 border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none"
               placeholder="Write your message to me here"
             ></textarea>
           </div>
-          <Button
-            type="submit"
-            className="sm:w-[200px] small:w-[200px] lg:w-[300px] m-6 hover:px-6 hover:py-4 hover:ease-in-out hover:duration-300 w-[300px] shadow-button"
-          >
-            Send me a message
-            <IoMdSend />
-          </Button>
+            <Button
+            type="submit" className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-white transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-slate-800 group">
+              <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-violet-250  group-hover:h-full"></span>
+              <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                <IoMdSend className="text-violet-250"/> 
+              </span>
+              <span className="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                 <IoMdSend className="text-white"/> 
+              </span>
+              <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Send me a message</span>
+              </Button>
         </form>
       </FormProvider>
     </main>
