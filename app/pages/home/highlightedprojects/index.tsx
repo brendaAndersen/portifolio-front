@@ -4,6 +4,13 @@ import { ProjectCard } from "./project-card";
 
 const items = [
   {
+    name: "Physics",
+    link: "https://github.com/brendaAndersen/physics",
+    description:
+      "Aplicação pessoal em desenvolvimento acerca de conhecimentos em física.",
+    techs: ["React/TS", "Git/Github", "Java/SpringBoot"],
+  },
+  {
     name: "NTT Movie",
     link: "https://github.com/brendaAndersen/ntt-movie",
     description: "Projeto consome uma API e lista os filmes vindos dela.",

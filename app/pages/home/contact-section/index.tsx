@@ -2,7 +2,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { Button } from "@/app/components/button";
 import { IoMdSend } from "react-icons/io";
 import { toast, Toaster } from "sonner";
 import emailjs from "@emailjs/browser";
@@ -31,7 +30,7 @@ const createMessageSchema = z.object({
     })
     .toLowerCase(),
   message: z.string().nonempty({
-    message: "Invalid email format",
+      message: "Invalid email format",
   }),
 });
 type CreateMessageData = z.infer<typeof createMessageSchema>;
@@ -40,7 +39,7 @@ export const ContactSection = () => {
     resolver: zodResolver(createMessageSchema),
   });
 
-  const { register, handleSubmit } = useForm<CreateMessageData>();
+  const { register, handleSubmit, reset } = useForm<CreateMessageData>();
 
   const onSubmit = ({ name, email, message }: CreateMessageData) => {
       const templateParams = {
@@ -49,12 +48,11 @@ export const ContactSection = () => {
         email: email
       }
       emailjs.send("service_wve5oan", "template_d7n87lj", templateParams, "nR8g6BCHRY_j_P_H8").then((response) => { 
-        toast.success(name + ", your message has been received!",{ duration: 2000 })
+        toast.success(name + ", your message has been received!",{ duration: 2000 });
+        reset();
       }, (err) => {
-        toast.error(name + ", unfortunately, there was an error, please, try again!",{ duration: 2000 })
+        toast.error(name + ", unfortunately, there was an error, please, try again!",{ duration: 2000 });
       })
-      
-  
   };
 
   return (
