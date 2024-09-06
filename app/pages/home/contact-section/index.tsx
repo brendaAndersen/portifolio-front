@@ -2,9 +2,11 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/app/components/button";
+// import { Button } from "@/app/components/button";
 import { IoMdSend } from "react-icons/io";
 import { toast, Toaster } from "sonner";
+import emailjs from "@emailjs/browser";
+import { Button } from "@/app/components/button";
 
 const createMessageSchema = z.object({
   name: z
@@ -39,8 +41,19 @@ export const ContactSection = () => {
   });
 
   const { register, handleSubmit } = useForm<CreateMessageData>();
-  const onSubmit = ({ name }: CreateMessageData) => {
-    toast.success(name + ", your message has been received!",{ duration: 2000 })
+
+  const onSubmit = ({ name, email, message }: CreateMessageData) => {
+      const templateParams = {
+        name: name,
+        message: message,
+        email: email
+      }
+      emailjs.send("service_wve5oan", "template_d7n87lj", templateParams, "nR8g6BCHRY_j_P_H8").then((response) => { 
+        toast.success(name + ", your message has been received!",{ duration: 2000 })
+      }, (err) => {
+        toast.error(name + ", unfortunately, there was an error, please, try again!",{ duration: 2000 })
+      })
+      
   
   };
 
@@ -65,7 +78,7 @@ export const ContactSection = () => {
             />
             <label className="text-violet-250 font-bold peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-9 scale-75 top-3 
             -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 
-            peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold">
+            peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-10 text-bold">
               Name
             </label>
           </div>
@@ -87,7 +100,8 @@ export const ContactSection = () => {
             <label
               className="text-violet-250 font-bold 
               peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-10 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0
-              rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-bold"
+              rtl:peer-focus:translate-x-1/4 peer-focus:text-violet-250 peer-focus:dark:text-violet-250 peer-placeholder-shown:scale-100 
+              peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-10 text-bold"
             >
               E-mail
             </label>
