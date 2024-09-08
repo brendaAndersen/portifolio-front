@@ -8,8 +8,10 @@ export const cn = (...inputs: ClassValue[]) => {
 export const techs = [
   {name:"Next.js", startDate:"2023-01-01"}, 
   {name:"React", startDate:"2020-01-01"}, 
+  {name:"SpringBoot", startDate:"2024-01-01"}, 
   {name:"JS/TS", startDate:"2020-01-01"}, 
   {name:"Node", startDate:"2022-01-01"}, 
+  {name:"Express.js", startDate:"2022-01-01"}, 
   {name:"PHP", startDate:"2023-06-01"}, 
   {name:"Docker", startDate:"2022-01-01"}, 
   {name: "Git/Github", startDate:"2019-01-01"}, 

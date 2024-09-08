@@ -27,7 +27,7 @@ const MOCK_CONTACTS = [
     icon: <TbBrandLinkedin />,
   },
   {
-    url: "https://wa.me/qr/SISWANKVLLXEL1",
+    url: "https://wa.me/5551984981330?text=Ol%C3%A1,%20verifiquei%20seu%20portif%C3%B3lio!",
     icon: <TbBrandWhatsapp />,
   },
 ];
@@ -59,9 +59,11 @@ export const CharSection = ({}) => {
                 >
                   <Button
                     onClick={() => setOpen(true)}
-                    className="hover:px-6 hover:py-3.5 small:gap-0 sm:gap-0 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
+                    className="hover:px-6 hover:py-3.5 small:gap-0 lg:gap-2 md:gap-2 sm:gap-0 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
                   >
-                    Contate-me!
+                    <h1 className="font-bold">
+                      Contate-me!
+                    </h1>
                     <FaLongArrowAltRight
                       className="lg:visible md:visible xs:invisible small:invisible sm:invisible"
                       size={18}
@@ -71,12 +73,14 @@ export const CharSection = ({}) => {
                 <Dialog.Portal>
                   <Dialog.Overlay className="bg-gray-200" />
                   <Dialog.Content
+                    aria-labelledby="dialog-title" aria-describedby="dialog-description"
                     className="fixed top-[50%] left-[50%] max-h-[85vh] 
                       translate-x-[-50%] translate-y-[-50%] focus:outline-none
                       rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
                       border-gray-600 border small:w-[300px]"
                     >
-                      <div className="flex place-content-end">
+                      <Dialog.Title id="dialog-title"></Dialog.Title>
+                      <div id="dialog-description" className="flex place-content-end">
                         <Dialog.Cancel className="pb-6" onClick={() => setOpen(false)}>
                           <IoCloseSharp color="white" />
                         </Dialog.Cancel>

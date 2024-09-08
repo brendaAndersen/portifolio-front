@@ -18,8 +18,8 @@ export const NavItem = ({ label, href }: NavItemProps) => {
         isActive && "text-gray-50"
       )}
     >
-      <span className="text-violet-250 hover:text-violet-100">#</span>
-      <p className="text-white hover:text-violet-100">
+      <span className="text-violet-250 hover:text-violet-100 font-bold">#</span>
+      <p className="text-white font-bold hover:text-violet-100">
       {label}
       </p>
     </Link>

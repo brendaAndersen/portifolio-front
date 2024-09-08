@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "./nav-item";
 const NAV_ITEMS = [
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  { label: "projects", href: "#projects" },
+  { label: "skills", href: "#skills" },
 ];
 export const Header = () => {
   return (

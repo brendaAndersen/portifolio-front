@@ -69,7 +69,7 @@ export const ContactSection = () => {
               {...register("name")}
               type="text"
               name="name"
-              className="focus:bg-slate-900 text-white block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none
+              className="focus:bg-slate-900 text-white focus:text-white block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none
               border-gray-600 focus:border-violet-250 peer font-thin"
               placeholder=" "
               required
@@ -87,7 +87,7 @@ export const ContactSection = () => {
               name="email"
               type="email"
               id="email"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent 
+              className="block py-2.5 px-0 w-full text-sm bg-transparent 
                 border-0 border-b-2 appearance-none text-white 
                 border-gray-600 dark:focus:border-violet-250 focus:outline-none 
                 focus:ring-0 focus:border-violet-250 peer font-thin
@@ -114,8 +114,9 @@ export const ContactSection = () => {
               placeholder="Write your message to me here"
             ></textarea>
           </div>
-            <Button
-            type="submit" className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-white transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-slate-800 group">
+          <Button type="submit" 
+            className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-white transition-all 
+            duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-slate-800 group">
               <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-violet-250  group-hover:h-full"></span>
               <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
                 <IoMdSend className="text-violet-250"/> 
