@@ -1,18 +1,21 @@
-import { cn } from "@/app/lib/utils";
-import { ButtonHTMLAttributes } from "react";
+import React, { forwardRef } from "react";
+import { Slot } from "@radix-ui/react-slot";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  asChild?: boolean; 
+}
 
-export const Button = ({ children, className, ...props }: ButtonProps) => {
-  return (
-    <button
-      className={cn(
-        "bg-violet-200 py-3 px-4 rounded-lg text-gray-50 flex items-center justify-center gap-2 hover:bg-violet-250 transition-all disabled:opacity",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, className, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+
+    return (
+      <Comp ref={ref} className={className} {...props}>
+        {children}
+      </Comp>
+    );
+  }
+);
+
+Button.displayName = "Button";

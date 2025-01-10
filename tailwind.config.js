@@ -1,6 +1,6 @@
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 const colors = require("tailwindcss/colors");
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 /** @type {import('tailwindcss').Config} */
 
 export const content = [
@@ -21,6 +21,9 @@ export const theme = {
       "violet-250": "#9956f6",
       "gray-200": "#c7d2fe",
       "gray-100": "#737373",
+      sky: colors.sky,        
+      stone: colors.stone,    
+      neutral: colors.neutral, 
       white: "#ffff",
       background: "#111827",
     },
@@ -60,5 +63,10 @@ export const theme = {
     overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
     contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
   },
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
 };
 export const plugins = [];

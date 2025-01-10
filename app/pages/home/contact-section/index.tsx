@@ -6,6 +6,11 @@ import { IoMdSend } from "react-icons/io";
 import { toast, Toaster } from "sonner";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/app/components/button";
+import * as Dialog from "@radix-ui/react-alert-dialog";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { VisuallyHidden } from '@reach/visually-hidden';
 
 const createMessageSchema = z.object({
   name: z
@@ -33,7 +38,9 @@ const createMessageSchema = z.object({
       message: "Invalid email format",
   }),
 });
+
 type CreateMessageData = z.infer<typeof createMessageSchema>;
+
 export const ContactSection = () => {
   const createMessageForm = useForm<CreateMessageData>({
     resolver: zodResolver(createMessageSchema),
@@ -130,4 +137,41 @@ export const ContactSection = () => {
       </FormProvider>
     </main>
   );
+};
+
+export const ContactButton = ({ setOpen }: any) => {
+  const [open, setOpenLocal] = useState(false); 
+
+  return (
+
+    <Dialog.Root open={open} onOpenChange={(open) => setOpenLocal(open)}> 
+      <Dialog.Trigger asChild>
+        <button
+          className=
+        "bg-violet-200 py-3 px-4 rounded-lg text-gray-50 flex items-center justify-center gap-2 hover:bg-violet-250 transition-all disabled:opacity"
+          onClick={() => setOpen(true)} 
+        >
+          <h1 className="font-bold">Contate-me!</h1>
+          <FaLongArrowAltRight className="lg:visible md:visible xs:invisible small:invisible sm:invisible" size={18} />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="bg-gray-200" />
+        <Dialog.Content
+          aria-labelledby="dialog-title" aria-describedby="dialog-description"
+          className="fixed top-[50%] left-[50%] max-h-[85vh] translate-x-[-50%] translate-y-[-50%] focus:outline-none rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] border-gray-600 border small:w-[300px]"
+        >
+          <VisuallyHidden>
+            <Dialog.Title id="dialog-title">Formulário de Contato</Dialog.Title>
+          </VisuallyHidden>
+          <div id="dialog-description" className="flex place-content-end">
+            <Dialog.Cancel onClick={() => {setOpenLocal(false); setOpen(false)}}>
+              <IoCloseSharp color="white" />
+            </Dialog.Cancel>
+          </div>
+          <ContactSection />
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )  
 };

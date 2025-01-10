@@ -1,14 +1,8 @@
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import { Header } from "./components/header";
-//import { appWithTranslation } from 'next-intl';
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,8 +13,20 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${poppins.variable} ${inter.variable}`}>
-      <body>{children}</body>
-    </html>
+    <> 
+      <Head>
+        <link 
+          rel="preload" 
+          href="/_next/static/media/eafabf029ad39a43-s.p.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+      </Head>
+      <html lang="pt-BR" className={`${poppins.variable}`}>
+
+        <body>{children}</body>
+      </html>
+    </>
   );
 }

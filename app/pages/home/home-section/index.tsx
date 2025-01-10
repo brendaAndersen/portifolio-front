@@ -1,23 +1,22 @@
 "use client";
-import { Button } from "@/app/components/button";
 import { TechBadge } from "@/app/components/tech-badge";
-import { techs } from "@/app/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { ContactButton } from "../contact-section";
+import { Header } from "@/app/components/header";
+import { HighlightedProjects } from "../highlightedprojects";
+import { KnownTechs } from "../known-techs";
 import {
   TbBrandGithub,
   TbBrandLinkedin,
   TbBrandWhatsapp,
 } from "react-icons/tb";
-import * as Dialog from "@radix-ui/react-alert-dialog";
-import { ContactSection } from "../contact-section";
-import { Header } from "@/app/components/header";
-import { HighlightedProjects } from "../highlightedprojects";
-import { KnownTechs } from "../known-techs";
-import { IoCloseSharp } from "react-icons/io5";
 
-const MOCK_CONTACTS = [
+
+import clsx from 'clsx';
+import { techs } from "@/app/lib/utils";
+
+export const MOCK_CONTACTS = [
   {
     url: "https://github.com/brendaAndersen",
     icon: <TbBrandGithub />,
@@ -31,11 +30,12 @@ const MOCK_CONTACTS = [
     icon: <TbBrandWhatsapp />,
   },
 ];
-export const CharSection = ({}) => {
-  const [open, setOpen] = useState(false);
+
+export const CharSection = () => {
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className={open ? "blur-sm" : ""}>
+    <div className={clsx({ 'blur-sm' : open })}>
       <Header />
       <section className="w-full h-[650px] bg-char-image bg-cover bg-center bg-no-repeat flex flex-col justify-end pb-10 py-32 lg:pb-[110px]">
         <div className="container flex items-start justify-between flex-col-reverse lg:flex-row">
@@ -52,43 +52,7 @@ export const CharSection = ({}) => {
               ))}
             </div>
             <div className="flex items-center mt-6 lg:mt-4 sm:gap-5 sm:flex-row flex-col">
-              <Dialog.Root>
-                <Dialog.Trigger
-                  asChild
-                  className="rounded p-2 hover:bg-violet-250"
-                >
-                  <Button
-                    onClick={() => setOpen(true)}
-                    className="hover:px-6 hover:py-3.5 small:gap-0 lg:gap-2 md:gap-2 sm:gap-0 hover:ease-out hover:duration-300 hover:font-bold w-max shadow-button"
-                  >
-                    <h1 className="font-bold">
-                      Contate-me!
-                    </h1>
-                    <FaLongArrowAltRight
-                      className="lg:visible md:visible xs:invisible small:invisible sm:invisible"
-                      size={18}
-                    />
-                  </Button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                  <Dialog.Overlay className="bg-gray-200" />
-                  <Dialog.Content
-                    aria-labelledby="dialog-title" aria-describedby="dialog-description"
-                    className="fixed top-[50%] left-[50%] max-h-[85vh] 
-                      translate-x-[-50%] translate-y-[-50%] focus:outline-none
-                      rounded-md p-8 shadow-lg bg-background md:w-[400px] lg:w-[400px] h-[500px] 
-                      border-gray-600 border small:w-[300px]"
-                    >
-                      <Dialog.Title id="dialog-title"></Dialog.Title>
-                      <div id="dialog-description" className="flex place-content-end">
-                        <Dialog.Cancel className="pb-6" onClick={() => setOpen(false)}>
-                          <IoCloseSharp color="white" />
-                        </Dialog.Cancel>
-                      </div>
-                    <ContactSection />
-                  </Dialog.Content>
-                </Dialog.Portal>
-              </Dialog.Root>
+              <ContactButton className={"bg-violet-200 py-3 px-4 rounded-lg text-gray-50 flex items-center justify-center gap-2 hover:bg-violet-250 transition-all disabled:opacity"} setOpen={setOpen} />
               <div className="text-2xl text-gray-600 flex items-center h-20 gap-3">
                 {MOCK_CONTACTS.map((contact, index) => (
                   <a
@@ -103,14 +67,7 @@ export const CharSection = ({}) => {
               </div>
             </div>
           </div>
-          <Image
-            width={420}
-            height={404}
-            src="/images/gif.gif"
-            alt="Profile Picture"
-            className="lg:visible md:visible xs:invisible small:invisible sm:invisible sm:w-full small:pt-28 tablet:pt-0 lg:pt-0 xs:w-full w-[400px] h-[300px] 
-            lg:w-[504px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
-          />
+          <ProfilePicture />
         </div>
       </section>
       <KnownTechs />
@@ -118,3 +75,13 @@ export const CharSection = ({}) => {
     </div>
   );
 };
+
+const ProfilePicture = () => (
+  <Image
+    width={420}
+    height={404}
+    src="/images/gif.gif"
+    alt="Profile Picture"
+    className="lg:visible md:visible xs:invisible small:invisible sm:invisible sm:w-full small:pt-28 tablet:pt-0 lg:pt-0 xs:w-full w-[400px] h-[300px] lg:w-[504px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-cover"
+  />
+);

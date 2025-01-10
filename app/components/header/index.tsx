@@ -2,10 +2,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "./nav-item";
-const NAV_ITEMS = [
-  { label: "projects", href: "#projects" },
-  { label: "skills", href: "#skills" },
-];
+import { NAV_ITEMS } from "@/app/lib/utils";
+
 export const Header = () => {
   return (
     <header className="absolute top-0 z-10 h-24 w-full flex items-center justify-center">
